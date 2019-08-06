@@ -31,16 +31,20 @@ class SmurfsList extends React.Component {
       return (
         <div style={{color: 'dodgerblue', textAlign:'center'}}>
           <h1>Smurf Village</h1>
-          <h3>Name:{this.props.name}</h3>
-          <h3>Age:{this.props.age}</h3>
-          <h3>Height:{this.props.height}</h3>
-
+          <h3>Name: {this.props.name}</h3>
+          <h3>Age: {this.props.age}</h3>
+          <h3>Height: {this.props.height}</h3>
+        <Smurf />
 
             {/* {this.props.smurfs.map(smurf => (
-            <Smurf smurf={smurf}/> */}
-          {/* ))} */}
-          <input onChange={this.handleChanges} value={this.state.addSmurf} />
-          <button onClick={this.addSmurf}>Add Smurf</button>
+            <Smurf smurf={smurf}/> 
+         ))}  */}
+          <form onSubmit={this.addSmurf}>
+            <input onChange={this.handleChanges} value={this.state.name} placeholder='name' />
+            <input onChange={this.handleChanges} value={this.state.age} placeholder='age' />
+            <input onChange={this.handleChanges} value={this.state.height} placeholder='height' />
+            <button type="submit" onClick={this.addSmurf}>Add Smurf</button>
+          </form>
         </div>
       );
     }

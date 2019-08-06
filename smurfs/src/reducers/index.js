@@ -7,13 +7,6 @@ const initialState = {
     name: 'Brainey',
     age: 200,
     height: '5cm',
-    id: 0,
-    fetchingSmurfs: false,
-    addingSmurf: false,
-    updatingSmurf: false,
-    deletingSmurf: false,
-    error: null
-
 };
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -31,6 +24,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         smurfs: [...state.smurfs, action.payload]
+
       };
     default:
       return state;
