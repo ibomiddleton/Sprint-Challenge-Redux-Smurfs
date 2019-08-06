@@ -1,62 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Smurf from './Smurf';
-import { addSmurf } from '../actions';
+import { getSmurf } from '../actions';
 
-// const SmurfsList = (props) => {
-//     return (
-//     <div>
-        // <h2>Name:{props.name}</h2>
-        // <strong>Height:{props.height} tall</strong>
-        // <p>Age:{props.age} years old</p>
-        // {props.smurfs.map (smurf => (
-        //     <Smurf smurf={smurf} />
-//         ))}
-//     </div>    
-//     );
-// };
+
 class SmurfsList extends React.Component {
     state = {
-      newSmurf: ''
+      name: '',
+      age: '',
+      height: ''
     };
   
-    addSmurf = e => {
+    getSmurf = e => {
       e.preventDefault();
-      this.props.addSmurf(this.state.addSmurf);
+      this.props.getSmurf();
     };
   
-    handleChanges = e => this.setState({ addSmurf: e.target.value });
+    handleChanges = e => this.setState({ getSmurf: e.target.name });
   
     render() {
       return (
         <div style={{color: 'dodgerblue', textAlign:'center'}}>
           <h1>Smurf Village</h1>
-          <h3>Name: {this.props.name}</h3>
-          <h3>Age: {this.props.age}</h3>
-          <h3>Height: {this.props.height}</h3>
-        <Smurf />
-
             {/* {this.props.smurfs.map(smurf => (
-            <Smurf smurf={smurf}/> 
-         ))}  */}
-          <form onSubmit={this.addSmurf}>
-            <input onChange={this.handleChanges} value={this.state.name} placeholder='name' />
-            <input onChange={this.handleChanges} value={this.state.age} placeholder='age' />
-            <input onChange={this.handleChanges} value={this.state.height} placeholder='height' />
+              <Smurf smurf={smurf}/> 
+            ))}  */}
+            <input onChange={this.handleChanges} value={this.state.smurf} placeholder='Dont type here' />
             <button type="submit" onClick={this.addSmurf}>Add Smurf</button>
-          </form>
         </div>
       );
     }
   }
 
     
-const mapStateToProps = state => {
+const mapStateToProps = state => { 
+    console.log(state);
     return {
         name: state.name,
-        height: state.height,
-        age: state.age
+        age: state.age,
+        height: state.height
     }
 }
 
-export default connect(mapStateToProps, {addSmurf})(SmurfsList);
+export default connect(mapStateToProps, { getSmurf })(SmurfsList);
